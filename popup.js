@@ -1,19 +1,19 @@
-document.getElementById("sendRequest").addEventListener("click", async () => {
-    const randomText = ["This is awesome!", "This is the worst video"][Math.floor(Math.random() * 2)];
+document.addEventListener("DOMContentLoaded", async () => {
+    const outputDiv = document.getElementById("output");
 
-    try {
-        const response = await fetch("http://localhost:5000/predict", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ comments: [randomText] })
-        });
+    // Get the current tab's URL
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        const url = tabs[0].url;
 
-        const result = await response.json();
-        console.log("API Response:", result);  // Log API response to console
-        document.getElementById("response").innerText = JSON.stringify(result);
-    } catch (error) {
-        console.error("Error:", error);  // Log errors to console
-    }
+        // Check if the URL is a valid YouTube URL
+        const youtubeRegex = /^https:\/\/(?:www\.)?youtube\.com\/watch\?v=([\w-]{11})/;
+        const match = url.match(youtubeRegex);
+
+        if (match && match[1]) {
+            const videoID = match[1];
+            outputDiv.textContent = `YouTube Video ID: ${videoID}`;
+        } else {
+            outputDiv.textContent = "This is not a valid YouTube URL";
+        }
+    });
 });
