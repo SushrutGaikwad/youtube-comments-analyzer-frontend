@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "YouTube Sentiment Analysis",
     "version": "1.0",
-    "description": "Check if the current URL is a YouTube video URL, and get the comment sentiment percentages.",
+    "description": "Analyze sentiments of YouTube comments.",
     "action": {
         "default_popup": "popup.html"
     },
