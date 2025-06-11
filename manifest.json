@@ -2,9 +2,15 @@
     "manifest_version": 3,
     "name": "YouTube Sentiment Analysis",
     "version": "1.0",
-    "description": "Check if the current URL is a YouTube video URL, and print the video ID.",
+    "description": "Check if the current URL is a YouTube video URL, and get the comment count.",
     "action": {
         "default_popup": "popup.html"
     },
-    "permissions": ["tabs"]
+    "permissions": ["tabs"],
+    "web_accessible_resources": [
+        {
+            "resources": ["secrets.json"],
+            "matches": ["<all_urls>"]
+        }
+    ]
 }
