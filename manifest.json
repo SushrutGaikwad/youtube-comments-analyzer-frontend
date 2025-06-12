@@ -6,7 +6,15 @@
     "action": {
         "default_popup": "popup.html"
     },
-    "permissions": ["tabs"],
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "scripting"
+    ],
+    "host_permissions": [
+        "http://localhost/*",
+        "https://www.googleapis.com/*"
+    ],
     "web_accessible_resources": [
         {
             "resources": ["secrets.json"],
